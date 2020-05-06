@@ -1,42 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%request.setCharacterEncoding("utf-8");%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<%!
-ServletContext application;
-synchronized void countPeople(){
-//获取Application，然后进行值获取
-application=getServletContext();
-//定义整型对e799bee5baa6e79fa5e98193e4b893e5b19e31333332633664象为其增值
-Integer number=(Integer)application.getAttribute("number");
-if(number==null){
-//如果为0，加一
-number=new Integer(1);
-//并且把值赋值给Application的属性number
-application.setAttribute("number",number);
-}
-else{
-//如果不为0，自增一
-number=new Integer(number.intValue()+1);
-//并且赋值给计数变量
-application.setAttribute("number",number);
-}
-}
-%>
-<%
-//判断是否第一次访问
-if(session.isNew()){
-countPeople();
-}
-//把number的值赋给perCount
-int perCount=((Integer)application.getAttribute("number")).intValue()
-%>
-<h1>你好，你是访问该网站的第<%=perCount%>的人</h1>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            
+            .word{
+                font-family: serif;
+                font-weight:bold;
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+        </style>
+    </head>
+    <body >
+        <p>
+            &ensp;&ensp;&ensp;&ensp;
+            
+                <font style="font-size: 30px;">
+                    <b>
+                        &ensp;&ensp;&ensp;
+                        <img src="./resource/head.jpg" width="50" height="50" alt="双双双" />&ensp;&ensp;
+                        主页&ensp;&ensp;
+                        药娘群引索&ensp;&ensp;
+                        购药引索&ensp;&ensp;
+                        公告栏 &ensp;&ensp;
+                        帮助
+                    </b>
+                </font>
+        </p>
+        <!-- head -->
+        <div class="word"><center><div style="font-size: 50px;width: 85%;text-align: left;">
+         
+            <p>网站简介：</p>
+            <p>1111111111111111111111</p>
+        </div>
+    </body>
 </html>
