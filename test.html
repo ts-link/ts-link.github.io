@@ -1,23 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("utf-8");%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>helloworld</title>
-    </head>
-    <style type="text/css">
-        .div1{
-            display: table-cell;
-            vertical-align: middle;
-            /* text-align: center;      */
-        }
-    </style>
-    <body>
-                
-        <div id="word" style="font-size: 30px;background-color: grba(255,255,255,0.1);">
-            <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=378c780f4ecad69839e16856272f5a14141d1469dd031a2437f3d60fcd7fe63e">
-                <div class="div1"><img border="0" src="https://p.qlogo.cn/gh/925873268/925873268/" width=50px height=50px  alt="药娘糖果屋"></div>
-                <div class="div1">药娘糖果屋:925873268</div>
-            </a>
-    </div>
-    </body>
-
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%!
+ServletContext application;
+synchronized void countPeople(){
+//获取Application，然后进行值获取
+application=getServletContext();
+//定义整型对e799bee5baa6e79fa5e98193e4b893e5b19e31333332633664象为其增值
+Integer number=(Integer)application.getAttribute("number");
+if(number==null){
+//如果为0，加一
+number=new Integer(1);
+//并且把值赋值给Application的属性number
+application.setAttribute("number",number);
+}
+else{
+//如果不为0，自增一
+number=new Integer(number.intValue()+1);
+//并且赋值给计数变量
+application.setAttribute("number",number);
+}
+}
+%>
+<%
+//判断是否第一次访问
+if(session.isNew()){
+countPeople();
+}
+//把number的值赋给perCount
+int perCount=((Integer)application.getAttribute("number")).intValue()
+%>
+<h1>你好，你是访问该网站的第<%=perCount%>的人</h1>
+</body>
 </html>
